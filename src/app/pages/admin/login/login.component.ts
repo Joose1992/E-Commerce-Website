@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,14 @@ export class LoginComponent {
     password: ''
   }
 
+  constructor(private router:Router){}
+
   onLogin(){
-    console.log(this.loginModel);
+    if(this.loginModel.userName == "testuser" && this.loginModel.password == "223344"){
+        this.router.navigateByUrl('/products');
+    }
+    else{
+      alert('Error, user not found!!')
+    }
   }
 }
